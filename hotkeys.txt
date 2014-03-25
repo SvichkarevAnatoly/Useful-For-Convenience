@@ -34,4 +34,8 @@ Ctrl+PgUp | Ctrl+PgDn - переключаться по вкладкам
 - Создать класс или интерфейс в Eclipse
 
 -----Ссылки на полезные сочетания-----
-http://forum.ubuntu.ru/index.php?topic=32541.0
+Ubuntu - http://forum.ubuntu.ru/index.php?topic=32541.0
+MC - http://pclinuxos.su/index.php/obzor-programm/utility/126-fajlovyj-menedzher-midnight-commander
+MC - http://www.opennet.ru/docs/RUS/mc/mc-file_man.html.gz
+Eclipse - http://habrahabr.ru/post/168223/
+Eclipse - http://howto.memcrab.com/search/label/Hotkeys
