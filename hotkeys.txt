@@ -28,12 +28,23 @@ Shift+Ctrl+t - открыть новую вкладку
 Shift+Ctrl+w - закрыть текущую вкладку
 Ctrl+PgUp | Ctrl+PgDn - переключаться по вкладкам
 
+-----Терминал(полезные команды)-----
+eog имя_картинки - просмотр картинки
+
+-----Nautilus-----
+Ctrl+Up - подняться наверх по директориям
+Ctrl+Down - вернуться вперёд по истории директорий
+
 -----Пока не найденные способы-----
+- MC - переименовать файл
+- MC - не показывать скрытые файлы
+- Упорядочить по нужной колонке в Nautilus
 - Выделить текст в терминале у вывода
 - Отредактировать запись в ВК и запостить
 - Создать класс или интерфейс в Eclipse
 
 -----Ссылки на полезные сочетания-----
+Nautilus - http://www.shortcutworld.com/en/linux/Nautilus_2.html
 Ubuntu - http://forum.ubuntu.ru/index.php?topic=32541.0
 MC - http://pclinuxos.su/index.php/obzor-programm/utility/126-fajlovyj-menedzher-midnight-commander
 MC - http://www.opennet.ru/docs/RUS/mc/mc-file_man.html.gz
