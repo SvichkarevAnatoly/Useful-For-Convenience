@@ -32,6 +32,8 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/deoplete.nvim'
 " Относительная нумерация строк
 Plug 'numbers.vim'
+" Проверка синтаксических ошибок
+Plug 'scrooloose/syntastic'
 call plug#end()
 
 " ========= Назначение горячих клавиш ================
