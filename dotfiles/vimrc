@@ -1,6 +1,8 @@
 " =========== Выбор стиля синтаксиса =================
 syntax on
 " molokai можно подключить только когда будет загружен плагин
+" и нужно ещё для neovim создать символьную ссылку из папки плагина
+" в папку colors
 colorscheme molokai
 let g:molokai_original = 1
 
@@ -12,10 +14,30 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'powerman/vim-plugin-ruscmd'
 " Красивая и функциональная строка состояния
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Стиль синтаксиса molokai
 Plug 'tomasr/molokai'
+" Для ассинхронного make
+Plug 'benekastah/neomake'
+" Взаимодействие с git
+Plug 'tpope/vim-fugitive'
+" Делать вставки шаблонов с зависимостями на другие плагины
+Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets' " Набор готовых шаблонов (вроде)
+" Быстрое перемещение к слову
+Plug 'easymotion/vim-easymotion'
+" Комментирование
+Plug 'tomtom/tcomment_vim'
+" Автодополнение (смотреть на github как настраивать)
+Plug 'Shougo/deoplete.nvim'
+" Относительная нумерация строк
+Plug 'numbers.vim'
 call plug#end()
 
 " ========= Назначение горячих клавиш ================
 " Запуск файлового менеджера внутри vim
 map <C-n> :NERDTreeToggle<CR>
+
+" ========= Конфигурация плагинов ====================
+" Использование deoplete при старте
+let g:deoplete#enable_at_startup = 1
