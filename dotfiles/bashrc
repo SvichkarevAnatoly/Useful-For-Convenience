@@ -124,6 +124,8 @@ alias inet='inetof; ineton'
 # git aliases
 alias gitlog='git log --graph --decorate --oneline'
 
+alias mc='EDITOR=nvim VIEWER=nvim mc'
+
 # trans alias
 alias trs='trans'
 alias trsr='trans -b :ru'
