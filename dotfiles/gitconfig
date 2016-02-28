@@ -1,0 +1,8 @@
+[user]
+	name = SvichkarevAnatoly
+	email = svichkarev.anatoly@gmail.com
+[credential]
+	helper = cache --timeout=3600
+[core]
+	excludesfile = /home/anatoly/.gitexcludes
+	autocrlf = input
