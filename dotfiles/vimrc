@@ -47,6 +47,8 @@ map <C-n> :NERDTreeToggle<CR>
 " ========= Конфигурация редактора ===================
 " Замена клавиши esc на jj
 :imap jj <Esc>
+" Для русской раскладки
+:imap оо <Esc>
 
 " Замена табов на пробелы
 filetype plugin indent on
