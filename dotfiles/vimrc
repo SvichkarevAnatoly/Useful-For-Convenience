@@ -36,6 +36,8 @@ Plug 'numbers.vim'
 "Plug 'scrooloose/syntastic'
 " Красивое отображение отступов в виде вертикальных линий (кажется не работает TODO)
 Plug 'nathanaelkane/vim-indent-guides'
+" Удобная работа со встроенным терминалом
+Plug 'kassio/neoterm'
 call plug#end()
 
 " ========= Назначение горячих клавиш ================
@@ -60,9 +62,20 @@ set expandtab
 let mapleader = "\<space>"
 
 " ========= Конфигурация плагинов ====================
+" =============== deoplete ===========================
 " Использование deoplete при старте
 let g:deoplete#enable_at_startup = 1
+" Выбор вручную варианты дополнения по tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
+" =============== easymotion =========================
 " Вызов плагина easy motion по одному нажатию на <Leader>
 map <Leader> <Plug>(easymotion-prefix)
 
+" =============== neoterm ============================
+let g:neoterm_position = 'vertical'
+" Пересылка строки или выделенной области в терминал
+nnoremap <silent> <f9> :TREPLSend<cr>
+vnoremap <silent> <f9> :TREPLSend<cr>
+" Спрятать/закрыть терминал
+nnoremap <silent> ,th :call neoterm#close()<cr>
