@@ -38,6 +38,8 @@ Plug 'numbers.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 " Удобная работа со встроенным терминалом
 Plug 'kassio/neoterm'
+" Возможность перехода по частям слова в CamelCase
+Plug 'bkad/CamelCaseMotion'
 call plug#end()
 
 " ========= Назначение горячих клавиш ================
@@ -68,7 +70,7 @@ let mapleader = "\<space>"
 " Использование deoplete при старте
 let g:deoplete#enable_at_startup = 1
 " Выбор вручную варианты дополнения по tab
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
 " =============== easymotion =========================
 " Вызов плагина easy motion по одному нажатию на <Leader>
@@ -81,3 +83,8 @@ nnoremap <silent> <f9> :TREPLSend<cr>
 vnoremap <silent> <f9> :TREPLSend<cr>
 " Спрятать/закрыть терминал
 nnoremap <silent> ,th :call neoterm#close()<cr>
+
+" =============== camelCase ==========================
+" Чтобы начало работать
+" Конфликтует с плагином easymotion
+"call camelcasemotion#CreateMotionMappings('<leader>')
