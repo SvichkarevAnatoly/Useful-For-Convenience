@@ -40,6 +40,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kassio/neoterm'
 " Возможность перехода по частям слова в CamelCase
 Plug 'bkad/CamelCaseMotion'
+" Автосохранение
+Plug '907th/vim-auto-save'
 call plug#end()
 
 " ========= Назначение горячих клавиш ================
@@ -71,6 +73,12 @@ let mapleader = "\<space>"
 let g:deoplete#enable_at_startup = 1
 " Выбор вручную варианты дополнения по tab
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" После указанного числа символов будую предлагаться варианты
+let g:deoplete#auto_completion_start_length = 1
+
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
 
 " =============== easymotion =========================
 " Вызов плагина easy motion по одному нажатию на <Leader>
@@ -78,11 +86,17 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " =============== neoterm ============================
 let g:neoterm_position = 'vertical'
+" Комбинация позволяющая привязывать запускающуюся команду по нажатию
+let g:neoterm_automap_keys = ',tt'
 " Пересылка строки или выделенной области в терминал
 nnoremap <silent> <f9> :TREPLSend<cr>
 vnoremap <silent> <f9> :TREPLSend<cr>
+nnoremap <silent> <f10> :TREPLSendFile<cr>
 " Спрятать/закрыть терминал
 nnoremap <silent> ,th :call neoterm#close()<cr>
+
+" =============== AutoSave ===========================
+let g:auto_save = 1
 
 " =============== camelCase ==========================
 " Чтобы начало работать
