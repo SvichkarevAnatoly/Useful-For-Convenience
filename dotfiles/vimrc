@@ -42,6 +42,13 @@ Plug 'kassio/neoterm'
 Plug 'bkad/CamelCaseMotion'
 " Автосохранение
 Plug '907th/vim-auto-save'
+" Поддержка latex
+Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex' " Более легковесная поддержка latex
+" Видеть редактирование latex pdf сразу
+Plug 'xuhdev/vim-latex-live-preview'
+" Перевод с помощью google translate
+Plug 'iadept/vim-gtranslate'
 call plug#end()
 
 " ========= Назначение горячих клавиш ================
@@ -53,6 +60,10 @@ map <C-n> :NERDTreeToggle<CR>
 :imap jj <Esc>
 " Для русской раскладки
 :imap оо <Esc>
+
+" Позволяет копировать текст в буфер обмена из vim
+"необходимо установить xsel, чтобы работало
+set clipboard+=unnamedplus
 
 " Замена табов на пробелы
 filetype plugin indent on
@@ -66,6 +77,18 @@ set expandtab
 " Замена <Leader> со стандартного \ на пробел
 " больше нужно для более простой работы с easymotion плагином
 let mapleader = "\<space>"
+
+" Последовательность выбора кодировок
+set fileencodings=utf-8,cp1251,koi8-r,cp866
+
+" Выбор языков проверки синтаксиса
+setlocal spell spelllang=ru,en
+" Отключение при старте проверки орфографии
+set nospell
+" Запуск проверки синтаксиса по F7
+nmap <F7> :set spell!<CR>
+imap <F7> <Esc>:set spell!<CR>
+vmap <F7> <Esc>:set spell!<CR>
 
 " ========= Конфигурация плагинов ====================
 " =============== deoplete ===========================
@@ -85,15 +108,20 @@ let g:deoplete#enable_camel_case = 1
 map <Leader> <Plug>(easymotion-prefix)
 
 " =============== neoterm ============================
-let g:neoterm_position = 'vertical'
-" Комбинация позволяющая привязывать запускающуюся команду по нажатию
+" Открытие терминала в новой вкладке горизонтально в виде полоски
+" не знаю как не открывать вообще, вроде и нельзя
+let g:neoterm_position = 'horizontal'
+let g:neoterm_size = 0
+" Комбинация позволяющая запустить привязанную через Tmap команду по нажатию
 let g:neoterm_automap_keys = ',tt'
 " Пересылка строки или выделенной области в терминал
 nnoremap <silent> <f9> :TREPLSend<cr>
 vnoremap <silent> <f9> :TREPLSend<cr>
 nnoremap <silent> <f10> :TREPLSendFile<cr>
-" Спрятать/закрыть терминал
+" Спрятать терминал
 nnoremap <silent> ,th :call neoterm#close()<cr>
+" Закрыть терминал (посылает <c-c>)
+nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
 " =============== AutoSave ===========================
 let g:auto_save = 1
@@ -102,3 +130,9 @@ let g:auto_save = 1
 " Чтобы начало работать
 " Конфликтует с плагином easymotion
 "call camelcasemotion#CreateMotionMappings('<leader>')
+
+" =============== latexlivepreview ===================
+let g:livepreview_previewer = 'evince'
+autocmd Filetype tex setl updatetime=500
+
+" =============== Google translator ==================
