@@ -6,3 +6,8 @@
 [core]
 	excludesfile = /home/anatoly/.gitexcludes
 	autocrlf = input
+[push]
+	default = simple
+[alias]
+	st = status
+	ci = commit
