@@ -85,10 +85,10 @@ set fileencodings=utf-8,cp1251,koi8-r,cp866
 setlocal spell spelllang=ru,en
 " Отключение при старте проверки орфографии
 set nospell
-" Запуск проверки синтаксиса по F7
-nmap <F7> :set spell!<CR>
-imap <F7> <Esc>:set spell!<CR>
-vmap <F7> <Esc>:set spell!<CR>
+" Запуск проверки синтаксиса по F2
+nmap <F2> :set spell!<CR>
+imap <F2> <Esc>:set spell!<CR>
+vmap <F2> <Esc>:set spell!<CR>
 
 " ========= Конфигурация плагинов ====================
 " =============== deoplete ===========================
