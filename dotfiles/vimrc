@@ -1,31 +1,14 @@
-" =========== Открытие и сохранение этого файла ======
-" Сочетание для открытия этого файла из редактора в соседней вкладке
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-" =========== Выбор стиля синтаксиса =================
-syntax on
-" molokai можно подключить только когда будет загружен плагин
-" и нужно ещё для neovim создать символьную ссылку из папки плагина
-" в папку colors
-colorscheme molokai
-let g:molokai_original = 1
+" Замена <leader> со стандартного \ на пробел
+let mapleader = "\<space>"
 
 " ========= Менеджер плагинов Vim-plug ===============
 call plug#begin('~/.vim/plugged')
 " Поддержка русского языка (можно набирать команды на русском)
 Plug 'powerman/vim-plugin-ruscmd'
-" Красивая и функциональная строка состояния
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 " Стиль синтаксиса molokai
 Plug 'tomasr/molokai'
-" Для ассинхронного make
-" Plug 'benekastah/neomake'
 " Взаимодействие с git
-" Plug 'tpope/vim-fugitive'
-" Делать вставки шаблонов с зависимостями на другие плагины
-" Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim' | Plug 'garbas/vim-snipmate'
-" Plug 'honza/vim-snippets' " Набор готовых шаблонов (вроде)
+Plug 'tpope/vim-fugitive'
 " Быстрое перемещение к слову
 " Plug 'easymotion/vim-easymotion'
 " Комментирование
@@ -35,68 +18,30 @@ Plug 'Shougo/deoplete.nvim'
 " Относительная нумерация строк
 Plug 'numbers.vim' " TODO надо попробовать просто relative number
 " Проверка синтаксических ошибок
-"Plug 'scrooloose/syntastic'
-" Красивое отображение отступов в виде вертикальных линий (кажется не работает TODO)
-" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'scrooloose/syntastic'
 " Удобная работа со встроенным терминалом
 " Plug 'kassio/neoterm'
-" Возможность перехода по частям слова в CamelCase
-" Plug 'bkad/CamelCaseMotion'
 " Автосохранение
 Plug '907th/vim-auto-save'
-" Поддержка latex
-" Plug 'vim-latex/vim-latex'
-" Plug 'lervag/vimtex' " Более легковесная поддержка latex
-" Видеть редактирование latex pdf сразу
-" Plug 'xuhdev/vim-latex-live-preview'
-" Перевод с помощью google translate
-" Plug 'iadept/vim-gtranslate'
 call plug#end()
 
-" ========= Назначение горячих клавиш ================
-" Запуск файлового менеджера внутри vim
-" map <C-n> :NERDTreeToggle<CR>
+" =========== Открытие и сохранение этого файла ======
+" Сочетание для открытия этого файла из редактора в соседней вкладке
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " ========= Конфигурация редактора ===================
 " Замена клавиши esc на jj
-:imap jk <Esc>
-" Для русской раскладки
-:imap ол <Esc>
+inoremap jk <Esc>
+vnoremap jk <Esc>
+inoremap ол <Esc>
+vnoremap ол <Esc>
+" Отключение выхода по esc из режимов редактирования и выделения
+inoremap <Esc> <nop>
+vnoremap <Esc> <nop>
 
-" Позволяет копировать текст в буфер обмена из vim
-"необходимо установить xsel, чтобы работало
-set clipboard+=unnamedplus
-
-" Замена табов на пробелы
-filetype plugin indent on
-" Отображать знак табуляции как 4 пробела
-set tabstop=4
-" Когда табуляция длиннее 4 пробелов, заменить на 4 пробела (TODO)
-set shiftwidth=4
-" При нажатии на tab добавить 4 пробела
-set expandtab
-
-" Игнорирование регистра при поиске
-set ignorecase
-
-" Отключение подсветки совпадений по <leader>h
-" nnoremap <leader>h :noh<cr>
-
-" Замена <Leader> со стандартного \ на пробел
-" больше нужно для более простой работы с easymotion плагином
-let mapleader = "\<space>"
-
-" Последовательность выбора кодировок
-set fileencodings=utf-8,cp1251,koi8-r,cp866
-
-" Выбор языков проверки синтаксиса
-" setlocal spell spelllang=ru,en
-" Отключение при старте проверки орфографии
-" set nospell
-" Запуск проверки синтаксиса по F2
-" nmap <F2> :set spell!<CR>
-" imap <F2> <Esc>:set spell!<CR>
-" vmap <F2> <Esc>:set spell!<CR>
+" =========== Выбор стиля синтаксиса =================
+syntax on
+colorscheme molokai
 
 " ========= Конфигурация плагинов ====================
 " =============== deoplete ===========================
@@ -111,36 +56,6 @@ let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 
-" =============== easymotion =========================
-" Вызов плагина easy motion по одному нажатию на <Leader>
-" map <Leader> <Plug>(easymotion-prefix)
-
-" =============== neoterm ============================
-" Открытие терминала в новой вкладке горизонтально в виде полоски
-" не знаю как не открывать вообще, вроде и нельзя
-" let g:neoterm_position = 'horizontal'
-" let g:neoterm_size = 0
-" Комбинация позволяющая запустить привязанную через Tmap команду по нажатию
-" let g:neoterm_automap_keys = ',tt'
-" Пересылка строки или выделенной области в терминал
-" nnoremap <silent> <f9> :TREPLSend<cr>
-" vnoremap <silent> <f9> :TREPLSend<cr>
-" nnoremap <silent> <f10> :TREPLSendFile<cr>
-" Спрятать терминал
-" nnoremap <silent> ,th :call neoterm#close()<cr>
-" Закрыть терминал (посылает <c-c>)
-" nnoremap <silent> ,tc :call neoterm#kill()<cr>
-
 " =============== AutoSave ===========================
 let g:auto_save = 1
 
-" =============== camelCase ==========================
-" Чтобы начало работать
-" Конфликтует с плагином easymotion
-"call camelcasemotion#CreateMotionMappings('<leader>')
-
-" =============== latexlivepreview ===================
-" let g:livepreview_previewer = 'evince'
-" autocmd Filetype tex setl updatetime=500
-
-" =============== Google translator ==================
