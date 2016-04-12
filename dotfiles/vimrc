@@ -23,6 +23,8 @@ Plug 'numbers.vim' " TODO надо попробовать просто relative 
 " Plug 'kassio/neoterm'
 " Автосохранение
 Plug '907th/vim-auto-save'
+" Перевод с помощью google translate
+Plug 'iadept/vim-gtranslate'
 call plug#end()
 
 " =========== Открытие и сохранение этого файла ======
@@ -59,3 +61,6 @@ let g:deoplete#enable_camel_case = 1
 " =============== AutoSave ===========================
 let g:auto_save = 1
 
+" ========= GTranslate ===============================
+" Перевод слова под курсором
+nnoremap tt :GTranslate<CR>
