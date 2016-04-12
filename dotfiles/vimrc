@@ -17,12 +17,12 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/deoplete.nvim'
 " Относительная нумерация строк
 Plug 'numbers.vim' " TODO надо попробовать просто relative number
-" Проверка синтаксических ошибок
-" Plug 'scrooloose/syntastic'
 " Удобная работа со встроенным терминалом
-" Plug 'kassio/neoterm'
+Plug 'kassio/neoterm'
 " Автосохранение
 Plug '907th/vim-auto-save'
+" Поддержка latex
+Plug 'vim-latex/vim-latex'
 " Перевод с помощью google translate
 Plug 'iadept/vim-gtranslate'
 " Плагин для временного отключения не vim way кнопок
@@ -56,6 +56,34 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Позволяет копировать текст в буфер обмена из vim
+"необходимо установить xsel, чтобы работало
+set clipboard+=unnamedplus
+
+" Замена табов на пробелы
+filetype plugin indent on
+" Отображать знак табуляции как 4 пробела
+set tabstop=4
+" Когда табуляция длиннее 4 пробелов, заменить на 4 пробела (TODO)
+set shiftwidth=4
+" При нажатии на tab добавить 4 пробела
+set expandtab
+
+" Игнорирование регистра при поиске
+set ignorecase
+
+" Последовательность выбора кодировок
+set fileencodings=utf-8,cp1251,koi8-r,cp866
+
+" Выбор языков проверки синтаксиса
+setlocal spell spelllang=ru,en
+" Отключение при старте проверки орфографии
+set nospell
+" Запуск проверки синтаксиса по F2
+nnoremap <F2> :set spell!<CR>
+inoremap <F2> <Esc>:set spell!<CR>
+vnoremap <F2> <Esc>:set spell!<CR>
+
 " =========== Выбор стиля синтаксиса =================
 syntax on
 colorscheme molokai
@@ -79,6 +107,22 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " =============== AutoSave ===========================
 let g:auto_save = 1
+
+" =============== neoterm ============================
+" Открытие терминала в новой вкладке горизонтально в виде полоски
+" не знаю как не открывать вообще, вроде и нельзя
+let g:neoterm_position = 'horizontal'
+let g:neoterm_size = 0
+" Комбинация позволяющая запустить привязанную через Tmap команду по нажатию
+let g:neoterm_automap_keys = ',tt'
+" Пересылка строки или выделенной области в терминал
+nnoremap <silent> <f9> :TREPLSend<cr>
+vnoremap <silent> <f9> :TREPLSend<cr>
+nnoremap <silent> <f10> :TREPLSendFile<cr>
+" Спрятать терминал
+nnoremap <silent> ,th :call neoterm#close()<cr>
+" Закрыть терминал (посылает <c-c>)
+nnoremap <silent> ,tc :call neoterm#kill()<cr>
 
 " =============== GTranslate =========================
 " Перевод слова под курсором
