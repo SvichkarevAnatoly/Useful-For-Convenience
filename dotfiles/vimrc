@@ -41,6 +41,13 @@ vnoremap ол <Esc>
 inoremap <Esc> <nop>
 vnoremap <Esc> <nop>
 
+" H - переход в начало строки
+nnoremap H 0
+vnoremap H 0
+" L - переход в конец строки
+nnoremap L $
+vnoremap L $
+
 " =========== Выбор стиля синтаксиса =================
 syntax on
 colorscheme molokai
