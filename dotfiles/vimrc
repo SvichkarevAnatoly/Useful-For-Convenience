@@ -10,7 +10,7 @@ Plug 'tomasr/molokai'
 " Взаимодействие с git
 Plug 'tpope/vim-fugitive'
 " Быстрое перемещение к слову
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 " Комментирование
 Plug 'tomtom/tcomment_vim'
 " Автодополнение (смотреть на github как настраивать)
@@ -25,6 +25,8 @@ Plug 'numbers.vim' " TODO надо попробовать просто relative 
 Plug '907th/vim-auto-save'
 " Перевод с помощью google translate
 Plug 'iadept/vim-gtranslate'
+" Плагин для временного отключения не vim way кнопок
+Plug 'wikitopian/hardmode'
 call plug#end()
 
 " =========== Открытие и сохранение этого файла ======
@@ -48,6 +50,12 @@ vnoremap H 0
 nnoremap L $
 vnoremap L $
 
+" отключение стрелок
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " =========== Выбор стиля синтаксиса =================
 syntax on
 colorscheme molokai
@@ -65,9 +73,17 @@ let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 
+" =============== easymotion =========================
+" Вызов плагина easy motion по одному нажатию на <Leader>
+map <Leader> <Plug>(easymotion-prefix)
+
 " =============== AutoSave ===========================
 let g:auto_save = 1
 
-" ========= GTranslate ===============================
+" =============== GTranslate =========================
 " Перевод слова под курсором
 nnoremap tt :GTranslate<CR>
+
+" =============== HardMode ===========================
+" Включение при старте сложного режима
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
