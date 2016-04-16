@@ -3,6 +3,8 @@ let mapleader = "\<space>"
 
 " ========= Менеджер плагинов Vim-plug ===============
 call plug#begin('~/.vim/plugged')
+" Файловый менеджер внутри vim
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Поддержка русского языка (можно набирать команды на русском)
 Plug 'powerman/vim-plugin-ruscmd'
 " Стиль синтаксиса molokai
@@ -16,7 +18,7 @@ Plug 'tomtom/tcomment_vim'
 " Автодополнение (смотреть на github как настраивать)
 Plug 'Shougo/deoplete.nvim'
 " Относительная нумерация строк
-Plug 'numbers.vim' " TODO надо попробовать просто relative number
+Plug 'numbers.vim'
 " Удобная работа со встроенным терминалом
 Plug 'kassio/neoterm'
 " Автосохранение
@@ -35,20 +37,18 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 " ========= Конфигурация редактора ===================
 " Замена клавиши esc на jj
-inoremap jk <Esc>
-vnoremap jk <Esc>
-inoremap ол <Esc>
-vnoremap ол <Esc>
+inoremap jj <Esc>
+inoremap оо <Esc>
 " Отключение выхода по esc из режимов редактирования и выделения
 inoremap <Esc> <nop>
-vnoremap <Esc> <nop>
 
 " H - переход в начало строки
 nnoremap H 0
 vnoremap H 0
 " L - переход в конец строки
+" g_ - переход к последнему не пробельному символу, т.е. не будет выделять перевод строки
 nnoremap L $
-vnoremap L $
+vnoremap L g_
 
 " отключение стрелок
 noremap <Up> <NOP>
@@ -75,7 +75,14 @@ set ignorecase
 " Последовательность выбора кодировок
 set fileencodings=utf-8,cp1251,koi8-r,cp866
 
-" Выбор языков проверки синтаксиса
+" === Строка состояния ===
+set statusline=%f " Открытый файл
+set statusline+=\ %y " Тип файла
+set statusline+=%= " Выравнивание на правую сторону
+set statusline+=%l/%L " Текущая строка/всего строк
+
+" === Проверка орфографии ===
+" Выбор языков проверки орфографии
 setlocal spell spelllang=ru,en
 " Отключение при старте проверки орфографии
 set nospell
@@ -89,6 +96,10 @@ syntax on
 colorscheme molokai
 
 " ========= Конфигурация плагинов ====================
+" ========= NERD Tree ================================
+" Запуск файлового менеджера внутри vim
+noremap <C-n> :NERDTreeToggle<CR>
+
 " =============== deoplete ===========================
 " Использование deoplete при старте
 let g:deoplete#enable_at_startup = 1
